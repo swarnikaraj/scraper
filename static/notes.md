@@ -29,3 +29,10 @@ bitwise operator
 | --or
 ~ --negation
 ~34 = 35  internall it does ( - (bin(34) +1))
+
+while i<n:
+    print("somethin")
+else :
+    print("somthing else)
+
+    in the aboe scenraio else only going to excute after succefull excution of w while      
