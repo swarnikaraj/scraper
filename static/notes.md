@@ -35,4 +35,6 @@ while i<n:
 else :
     print("somthing else)
 
-    in the aboe scenraio else only going to excute after succefull excution of w while      
+    in the aboe scenraio else only going to excute after succefull excution of w while 
+    if we use any break in while loop then else wont run   
+    you can do the same thing with for loop as well  
