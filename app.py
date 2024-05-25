@@ -1,4 +1,7 @@
 from flask import Flask
+import scraper
+
+
 app=Flask(__name__)
 
 @app.route("/")

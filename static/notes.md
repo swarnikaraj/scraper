@@ -38,3 +38,13 @@ else :
     in the aboe scenraio else only going to excute after succefull excution of w while 
     if we use any break in while loop then else wont run   
     you can do the same thing with for loop as well  
+
+
+    # Just like in list tuples also store any kind of items at once
+    tup=(1,2,"her",2+2j,true)
+
+
+
+    set only allow to store immutables inside because set make things unique, set internallly try to make hashables from items
+
+    you cannot do index based accessing from set
