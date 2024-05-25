@@ -10,11 +10,32 @@ def urlSurfer(searchItem):
         result=urlclient.read()
         htmldata=bs(result,"html.parser")
         bigDivs=htmldata.find_all("div",{"class":"cPHDOP col-12-12"})
+        
         del bigDivs[0:3]
+        
         for i in bigDivs:
             targetlink=i.div.div.div.a["href"]
-            productlink=flipkart_url+targetlink
-            print(productlink)
+            productlink="https://www.flipkart.com"+targetlink
+            
+            product_request=requests.get(productlink)
+            parsed_prod_page=bs(product_request.text,"html.parser")
+            comment_box=parsed_prod_page.find_all("div",{"class":"col EPCmJX"})
+            
+            # print(comment_box[0].find_all("p","_2NsDsF AwS1CA")[0].text)
+            # print(comment_box[0].find_all("p","_2NsDsF AwS1CA")[1].text)
+            # print(comment_box[0].find_all("p","_2NsDsF AwS1CA")[4].text)
+          
+            for j in comment_box:
+                name=j.find_all("p","_2NsDsF AwS1CA")[0].text
+                ratings=j.div.div.text
+                comment=j.div.p.text
+                # print(name,ratings,comment)
+                
+           
+            # comment_box[0].div.div.find_all("img",{"class":"Rza2QY"})
+
+
+           
     except Exception as e:
         print("An error occurred:", e)
 
