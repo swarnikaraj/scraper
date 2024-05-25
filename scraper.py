@@ -9,9 +9,12 @@ def urlSurfer(searchItem):
         urlclient = urlopen(flipkart_url)       
         result=urlclient.read()
         htmldata=bs(result,"html.parser")
-        singlepage=htmldata.find_all("div",{"class":"cPHDOP col-12-12"})
-        
-        print(singlepage)
+        bigDivs=htmldata.find_all("div",{"class":"cPHDOP col-12-12"})
+        del bigDivs[0:3]
+        for i in bigDivs:
+            targetlink=i.div.div.div.a["href"]
+            productlink=flipkart_url+targetlink
+            print(productlink)
     except Exception as e:
         print("An error occurred:", e)
 
