@@ -10,9 +10,12 @@ def urlSurfer(searchItem):
         result=urlclient.read()
         htmldata=bs(result,"html.parser")
         bigDivs=htmldata.find_all("div",{"class":"cPHDOP col-12-12"})
-        
+        filename=searchItem +".csv"
+        fw=open(filename,"w")
+        headers="name,rating, comment \n"
+        fw.write(headers)
         del bigDivs[0:3]
-        
+        reviews=[]
         for i in bigDivs:
             targetlink=i.div.div.div.a["href"]
             productlink="https://www.flipkart.com"+targetlink
@@ -29,15 +32,20 @@ def urlSurfer(searchItem):
                 name=j.find_all("p","_2NsDsF AwS1CA")[0].text
                 ratings=j.div.div.text
                 comment=j.div.p.text
+                dic={"name":name,"ratings":ratings,"comment":comment}
+                reviews.append(dic)
+                
                 # print(name,ratings,comment)
                 
            
             # comment_box[0].div.div.find_all("img",{"class":"Rza2QY"})
-
+         
+        return reviews 
 
            
     except Exception as e:
         print("An error occurred:", e)
+        
 
 
 urlSurfer('tv')    
